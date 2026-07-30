@@ -1,0 +1,15 @@
+This application bundles the following third-party software:
+
+ggoled (ggoled.exe)
+Source: https://github.com/JerwuQu/ggoled
+License: GNU General Public License v3.0 (see ggoled-LICENSE.txt in this folder)
+
+ggoled is not developed or maintained by the author of SteelSeries Resource
+Monitor. It is included unmodified so this app can talk to the Arctis Nova
+Pro base station's OLED screen over USB. Corresponding source code for the
+exact version distributed here is available from the project's GitHub
+releases page: https://github.com/JerwuQu/ggoled/releases
+
+SteelSeries Resource Monitor itself remains licensed under the MIT License
+(see LICENSE.txt); only ggoled.exe, a separate executable invoked as an
+external process, is covered by the GPLv3 terms above.
