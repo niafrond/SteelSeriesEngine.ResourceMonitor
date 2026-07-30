@@ -1,3 +1,9 @@
+## [1.0.2](https://github.com/niafrond/SteelSeriesEngine.ResourceMonitor/compare/v1.0.1...v1.0.2) (2026-07-30)
+
+### Bug Fixes
+
+* add verification step for generated binary and update artifact upload path ([b16e0eb](https://github.com/niafrond/SteelSeriesEngine.ResourceMonitor/commit/b16e0eb5b9197a71805017846c471f1edd887058))
+
 ## [1.0.1](https://github.com/niafrond/SteelSeriesEngine.ResourceMonitor/compare/v1.0.0...v1.0.1) (2026-07-30)
 
 ### Bug Fixes
