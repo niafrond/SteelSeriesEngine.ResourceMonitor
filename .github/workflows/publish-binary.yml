@@ -31,14 +31,21 @@ jobs:
         run: |
           powershell -ExecutionPolicy Bypass -File .\installer\build.ps1
 
+      - name: Verify generated binary
+        run: |
+          if (!(Test-Path .\installer\app\SteelSeries.SysMonitor.exe)) {
+            Write-Error "Generated binary not found: installer\\app\\SteelSeries.SysMonitor.exe"
+            exit 1
+          }
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: SteelSeries-SysMonitor-installer
-          path: installer/Output/
+          name: SteelSeries-SysMonitor-binary
+          path: installer/app/SteelSeries.SysMonitor.exe
 
       - name: Create GitHub release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: installer/Output/*
+          files: installer/app/SteelSeries.SysMonitor.exe
