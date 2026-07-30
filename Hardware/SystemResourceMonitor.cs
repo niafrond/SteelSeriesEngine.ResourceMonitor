@@ -9,7 +9,8 @@ namespace SteelSeries.SysMonitor.Hardware
     public static class SystemResourceMonitor
     {
         private static Computer _computer = null!;
-        private static PerformanceCounter _diskTimeCounter = null!;
+        private static PerformanceCounter _diskIdleCounter = null!;
+        private static float _diskSmoothedPercent;
 
         public static void Initialize()
         {
@@ -24,8 +25,9 @@ namespace SteelSeries.SysMonitor.Hardware
             };
             _computer.Open();
 
-            _diskTimeCounter = new PerformanceCounter("LogicalDisk", "% Disk Time", "C:", true);
-            _diskTimeCounter.NextValue();
+            _diskIdleCounter = new PerformanceCounter("LogicalDisk", "% Idle Time", "C:", true);
+            _diskIdleCounter.NextValue();
+            _diskSmoothedPercent = 0f;
         }
 
         public static ResourceStat GetCpu()
@@ -99,8 +101,21 @@ namespace SteelSeries.SysMonitor.Hardware
 
         public static ResourceStat GetDisk()
         {
-            float percent = Math.Clamp(_diskTimeCounter.NextValue(), 0, 100);
-            return new ResourceStat("C:", percent, "BUSY");
+            try
+            {
+                float idle = Math.Clamp(_diskIdleCounter.NextValue(), 0f, 100f);
+                float rawActivity = 100f - idle;
+
+                const float alpha = 0.35f;
+                _diskSmoothedPercent = (_diskSmoothedPercent * (1f - alpha)) + (rawActivity * alpha);
+                float percent = Math.Clamp(_diskSmoothedPercent, 0f, 100f);
+
+                return new ResourceStat("C:", percent, "ACT");
+            }
+            catch
+            {
+                return new ResourceStat("C:", 0, "N/A");
+            }
         }
 
         public static int GetBatteryPercent()
