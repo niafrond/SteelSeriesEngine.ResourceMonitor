@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/niafrond/SteelSeriesEngine.ResourceMonitor/compare/v1.0.0...v1.0.1) (2026-07-30)
+
+### Bug Fixes
+
+* update disk performance monitoring to use idle time and smooth the activity percentage ([a40d283](https://github.com/niafrond/SteelSeriesEngine.ResourceMonitor/commit/a40d283338e84351628587dcc41346e5b3f1e133))
+
 ## 1.0.0 (2026-07-30)
 
 ### Features
