@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/niafrond/SteelSeriesEngine.ResourceMonitor/compare/v1.0.2...v1.0.3) (2026-07-30)
+
+### Bug Fixes
+
+* update workflow to trigger build-and-publish on release events and inherit secrets ([7bca299](https://github.com/niafrond/SteelSeriesEngine.ResourceMonitor/commit/7bca2993b15cc2e6cf8007f75da0ac7a7ba297a5))
+
 ## [1.0.2](https://github.com/niafrond/SteelSeriesEngine.ResourceMonitor/compare/v1.0.1...v1.0.2) (2026-07-30)
 
 ### Bug Fixes
